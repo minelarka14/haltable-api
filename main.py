@@ -44,4 +44,4 @@ async def root(busstop: str, key: str, svc: str, num: str):
         return JSONResponse(status_code=status.HTTP_403_FORBIDDEN, content=item)
 
 if __name__ == '__main__':
-    uvicorn.run("buslocation:app", port=5000, reload=True, access_log=False)
+    uvicorn.run("main:app", port=5000, reload=True, access_log=False)
