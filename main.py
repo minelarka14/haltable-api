@@ -26,8 +26,8 @@ async def root(busstop: str, key: str, svc: str, num: str):
         for i in range (int(num)):
             busnum = buses.busplates[random.randint(0, len(buses.busplates) - 1)]
             buses.busplates.remove(busnum)
-            msg = "Bus number " + busnum + " of service " + svc + " has been called"
-            print('\033[33;1m' + msg, '\033[m')
+            # msg = "Bus number " + busnum + " of service " + svc + " has been called"
+            # print('\033[33;1m' + msg, '\033[m')
             busesSent.append(busnum)
         return {
             "message": "Bus number " + str(busesSent) + " of service " + svc + " have been sent.",
