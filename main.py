@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/buslocation/")
 async def root(code: str, key: str):
-    if key == "V&cfDSOMAB@%!ZZ2GCN5O@gpz2p$3KO9lctw48zo":
+    if key == "sWk0ka3Rw3Xn46Ma2S0FYt8TkL9bVYzrdVpuF6Nexu5cQsJ0":
         return {
             "Bus_Code": code,
             "Current_Location": svc10.stopSeq[random.randint(0, len(svc10.stopSeq) - 1)]
