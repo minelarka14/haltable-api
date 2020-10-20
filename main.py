@@ -1,10 +1,15 @@
 from fastapi import Body, FastAPI, status
 from fastapi.responses import JSONResponse
-import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 import random
 import svc10
 import buses
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"]
+)
 
 @app.get("/buslocation/")
 async def root(code: str, key: str):
