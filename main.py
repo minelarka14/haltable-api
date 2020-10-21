@@ -31,8 +31,8 @@ async def root(busstop: str, key: str, svc: str, num: str):
         for i in range (int(num)):
             busnum = buses.busplates[random.randint(0, len(buses.busplates) - 1)]
             buses.busplates.remove(busnum)
-            # msg = "Bus number " + busnum + " of service " + svc + " has been called"
-            # print('\033[33;1m' + msg, '\033[m')
+            msg = "Bus number " + busnum + " of service " + svc + " has been called"
+            print('\033[33;1m' + msg, '\033[m')
             busesSent.append(busnum)
         return {
             "message": "Bus number " + str(busesSent) + " of service " + svc + " have been sent.",
@@ -48,3 +48,29 @@ async def root(busstop: str, key: str, svc: str, num: str):
         }
         return JSONResponse(status_code=status.HTTP_403_FORBIDDEN, content=item)
 
+@app.get('/simulate/scan')
+async def root(key: str, num: str, svc: str):
+    if key == "IYZteLLluaGafjMuNzwWQ2zA8cU5lHEM6P3uL9bq":
+        numcall = int(num)//100
+        print(numcall)
+        busesSent = []
+        for i in range(int(numcall)):
+            busnum = buses.busplates[random.randint(0, len(buses.busplates) - 1)]
+            buses.busplates.remove(busnum)
+            msg = "Bus number " + busnum + " of service " + svc + " has been called"
+            print('\033[33;1m' + msg, '\033[m')
+            busesSent.append(busnum)
+        print('\033[32;1m' + "A total of " + str(numcall) + " buses have been called", '\033[m')
+        return {
+            "message": "Bus number " + str(busesSent) + " of service " + svc + " have been sent.",
+            "Data": {
+                "Bus_Number": busesSent,
+                "Svc": svc
+            }
+        }
+
+    else:
+        item={
+            "detail":"Incorrect API Key"
+        }
+        return JSONResponse(status_code=status.HTTP_403_FORBIDDEN, content=item)
