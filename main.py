@@ -52,7 +52,6 @@ async def root(busstop: str, key: str, svc: str, num: str):
 async def root(key: str, num: str, svc: str):
     if key == "IYZteLLluaGafjMuNzwWQ2zA8cU5lHEM6P3uL9bq":
         numcall = int(num)//100
-        print(numcall)
         busesSent = []
         for i in range(int(numcall)):
             busnum = buses.busplates[random.randint(0, len(buses.busplates) - 1)]
